@@ -1,0 +1,2 @@
+mysql -h localhost -u root -p '';
+mysql select user, host from mysql.user;
