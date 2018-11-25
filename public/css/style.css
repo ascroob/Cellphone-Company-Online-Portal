@@ -9,15 +9,13 @@ th {
 	border-bottom: 1px solid #aaa;
 }
 
-#body_bg { 
-	background-color:#9F81F7; 
-}
-
-#login-form{ 
-
-	background:#A9D0F5; 
-	border: 3 px solid #eeeee; 
+#login-form{  
+	border: 3 px; 
 	padding:9px 9px;
 	width:300px; 
 	border-radius:5px; 
+}
+
+.dropdown-backdrop {
+    position: static;
 }

@@ -1,3 +1,10 @@
+   <?php
+        if(isset($_POST['submit'])){
+            $selected_val = $_POST['formSPID'];  // Storing Selected Value In Variable
+            echo "You have selected :" .$selected_val;  // Displaying Selected Value
+     }?>
+
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -19,9 +26,24 @@
                 <td><input type="password" name="password" id="password"></input></td>
             </tr>
 			
+			<form action="#" method="post">
+			<p>Service Provider ID
+            <select name="select" id = "formSPID">
+              <option value="">Select...</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+            </p>
+            </form>
+            
             <tr>
 				
-                <td><input type="submit" value="Submit" />
+                <td><input type="submit" value="submit" />
 				
             </tr>
         </table>

@@ -1,21 +1,21 @@
 
-<?php include "templates/header.php"; ?>
+<?php include "../templates/header.php"; ?>
 
 <?php if (isset($_POST['submit'])) {
 	try {
-		require "../connect.php";
-		require "../common.php";
+		require "../../connect.php";
+		require "../../common.php";
 
 		$connection = new PDO($dsn, $username, $password, $options);
 		
 		$sql = "SELECT * 
 				FROM c9.Customer
-				WHERE serviceProviderID = :spID";
+				WHERE clientName = :name";
 				
-		$serviceProviderID = $_POST['spID'];
+		$clientName = $_POST['name'];
 		
 		$statement = $connection->prepare($sql);
-        $statement->bindParam(':spID', $serviceProviderID, PDO::PARAM_STR);
+        $statement->bindParam(':name', $clientName, PDO::PARAM_STR);
         $statement->execute();
         
         $result = $statement->fetchAll();
@@ -31,7 +31,6 @@
 if (isset($_POST['submit'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
 		<h2>Results</h2>
-
 		<table>
 			<thead>
 				<tr>
@@ -41,6 +40,7 @@ if (isset($_POST['submit'])) {
 					<th>Email</th>
 					<th>Birth Date</th>
 					<th>Date Joined</th>
+					<th>Service Provider ID</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -52,24 +52,26 @@ if (isset($_POST['submit'])) {
 				<td><?php echo escape($row["clientEmail"]); ?></td>
 				<td><?php echo escape($row["birthDate"]); ?></td>
 				<td><?php echo escape($row["dateJoined"]); ?></td>
+				<td><?php echo escape($row["serviceProviderID"]); ?></td>
 			</tr>
 		<?php } ?> 
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote>No results found for <?php echo escape($_POST['spID']); ?>.</blockquote>
+		<blockquote>No results found for <?php echo escape($_POST['clientName']); ?>.</blockquote>
 	<?php } 
 } ?> 
 
 
-<h2>Customers</h2>
+<h2>Customer Search</h2>
+<br>
 
 <form method="post">
-	<label for="spID">Service Provider ID</label>
-	<input type="text" id="spID" name="spID">
+	<label for="name">Customer Name</label>
+	<input type="text" id="name" name="name">
 	<input type="submit" name="submit" value="View Results">
 </form>
 
-<a href="index.php">Back to home</a>
+<a href="../index.php">Back to home</a>
 
-<?php include "templates/footer.php"; ?>
+<?php include "../templates/footer.php"; ?>
