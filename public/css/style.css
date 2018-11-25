@@ -19,3 +19,17 @@ th {
 .dropdown-backdrop {
     position: static;
 }
+
+.footer {
+    position: fixed;
+    padding: 9px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+body{
+  padding: 10px;
+}
+

@@ -1,6 +1,16 @@
 
 <?php include "../templates/header.php"; ?>
 
+<h2>Data Usage</h2>
+
+<form method="post">
+	<label for="spID">Service Provider ID</label>
+	<input type="text" id="spID" name="spID">
+	<input type="submit" name="submit" value="View Results">
+</form>
+<br>
+
+
 <?php if (isset($_POST['submit'])) {
 	try {
 		require "../../connect.php";
@@ -8,9 +18,12 @@
 
 		$connection = new PDO($dsn, $username, $password, $options);
 		
-		$sql = "SELECT c.idNo, clientName, currData
-                FROM c9.Customer c, c9.Phone p
+		$sql = "SELECT c.idNo, clientName, currData, dataAmount
+                FROM c9.Customer c, c9.Phone p, c9.Contract co, c9.Statement s, c9.Plan pl
                 WHERE c.idNo = p.idNo
+                AND c.idNo = co.idNo
+                AND co.contractID = s.contractID
+                AND s.planID = pl.planID
                 AND dateJoined > 2018-11-20
                 AND serviceProviderID = :spID
                 GROUP BY c.idNo;";
@@ -40,7 +53,8 @@ if (isset($_POST['submit'])) {
 				<tr>
 					<th>Customer ID</th>
 					<th>Name</th>
-					<th>Data Usage (GB)</th>
+					<th>Data Usage</th>
+					<th>Data Limit</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,7 +62,8 @@ if (isset($_POST['submit'])) {
 			<tr>
 				<td><?php echo escape($row["idNo"]); ?></td>
 				<td><?php echo escape($row["clientName"]); ?></td>
-				<td><?php echo escape($row["currData"]); ?></td>
+				<td><?php echo escape($row["currData"]); ?> GB</td>
+				<td><?php echo escape($row["dataAmount"]); ?> GB</td>
 			</tr>
 		<?php } ?> 
 			</tbody>
@@ -58,15 +73,5 @@ if (isset($_POST['submit'])) {
 	<?php } 
 } ?> 
 
-
-<h2>Customers out of the Country</h2>
-
-<form method="post">
-	<label for="spID">Service Provider ID</label>
-	<input type="text" id="spID" name="spID">
-	<input type="submit" name="submit" value="View Results">
-</form>
-
-<a href="../index.php">Back to home</a>
 
 <?php include "../templates/footer.php"; ?>

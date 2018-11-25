@@ -1,7 +1,8 @@
 
 <?php include "../templates/header.php"; ?>
 
-<h2>Customers</h2>
+
+<h2>View Plans</h2>
 
 <form method="post">
 	<label for="spID">Service Provider ID</label>
@@ -17,9 +18,13 @@
 
 		$connection = new PDO($dsn, $username, $password, $options);
 		
-		$sql = "SELECT * 
-				FROM c9.Customer
-				WHERE serviceProviderID = :spID";
+		$sql = "SELECT cu.idNo, p.planID, textAmount, minAmount, dataAmount
+                FROM c9.Customer cu, c9.Contract co, c9.Statement s, c9. Plan p
+                WHERE cu.idNo = co.idNo
+                AND co.contractID = s.contractID
+                AND s.planID = p.planID
+                AND cu.serviceProviderID = :spID
+                GROUP BY cu.idNo";
 				
 		$serviceProviderID = $_POST['spID'];
 		
@@ -39,28 +44,25 @@
 <?php  
 if (isset($_POST['submit'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
-		<h2>All Customers</h2>
-
-		<table class="table table-sm">
-  			<thead>
-   		 		<tr>
-					<th scope="col">Customer ID</th>
-					<th scope="col">Name</th>
-					<th scope="col">Address</th>
-					<th scope="col">Email</th>
-					<th scope="col">Birth Date</th>
-					<th scope="col">Date Joined</th>
+		<h2>Result</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Customer ID</th>
+					<th>Plan ID</th>
+					<th>Text Limit</th>
+					<th>Minutes Limit</th>
+					<th>Data Limit</th>
 				</tr>
 			</thead>
 			<tbody>
 	<?php foreach ($result as $row) { ?>
 			<tr>
-				<th scope = "row"><?php echo escape($row["idNo"]); ?></td>
-				<td><?php echo escape($row["clientName"]); ?></td>
-				<td><?php echo escape($row["clientAddress"]); ?></td>
-				<td><?php echo escape($row["clientEmail"]); ?></td>
-				<td><?php echo escape($row["birthDate"]); ?></td>
-				<td><?php echo escape($row["dateJoined"]); ?></td>
+				<td><?php echo escape($row["idNo"]); ?></td>
+				<td><?php echo escape($row["planID"]); ?></td>
+				<td><?php echo escape($row["textAmount"]); ?></td>
+				<td><?php echo escape($row["minAmount"]); ?></td>
+				<td><?php echo escape($row["dataAmount"]); ?> GB</td>
 			</tr>
 		<?php } ?> 
 			</tbody>

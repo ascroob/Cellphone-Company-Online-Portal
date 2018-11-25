@@ -1,7 +1,8 @@
 
 <?php include "../templates/header.php"; ?>
 
-<h2>Customers</h2>
+
+<h2>View Transactions</h2>
 
 <form method="post">
 	<label for="spID">Service Provider ID</label>
@@ -17,9 +18,12 @@
 
 		$connection = new PDO($dsn, $username, $password, $options);
 		
-		$sql = "SELECT * 
-				FROM c9.Customer
-				WHERE serviceProviderID = :spID";
+		$sql = "SELECT cu.idNo, transNo, transDate, transAmount
+                FROM c9.Customer cu, c9.Payment p, c9.Transactions t
+                WHERE cu.idNo = p.idNo
+                AND p.methodID = t.methodID
+                AND cu.serviceProviderID = :spID
+                GROUP BY cu.idNo";
 				
 		$serviceProviderID = $_POST['spID'];
 		
@@ -39,28 +43,23 @@
 <?php  
 if (isset($_POST['submit'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
-		<h2>All Customers</h2>
-
-		<table class="table table-sm">
-  			<thead>
-   		 		<tr>
-					<th scope="col">Customer ID</th>
-					<th scope="col">Name</th>
-					<th scope="col">Address</th>
-					<th scope="col">Email</th>
-					<th scope="col">Birth Date</th>
-					<th scope="col">Date Joined</th>
+		<h2>Result</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Customer ID</th>
+					<th>Transaction Number</th>
+					<th>Transaction Date</th>
+					<th>Transaction Amount</th>
 				</tr>
 			</thead>
 			<tbody>
 	<?php foreach ($result as $row) { ?>
 			<tr>
-				<th scope = "row"><?php echo escape($row["idNo"]); ?></td>
-				<td><?php echo escape($row["clientName"]); ?></td>
-				<td><?php echo escape($row["clientAddress"]); ?></td>
-				<td><?php echo escape($row["clientEmail"]); ?></td>
-				<td><?php echo escape($row["birthDate"]); ?></td>
-				<td><?php echo escape($row["dateJoined"]); ?></td>
+				<td><?php echo escape($row["idNo"]); ?></td>
+				<td><?php echo escape($row["transNo"]); ?></td>
+				<td><?php echo escape($row["transDate"]); ?></td>
+				<td>$<?php echo escape($row["transAmount"]); ?></td>
 			</tr>
 		<?php } ?> 
 			</tbody>

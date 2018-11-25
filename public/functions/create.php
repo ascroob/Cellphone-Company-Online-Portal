@@ -42,6 +42,5 @@ if (isset($_POST['submit'])) {
 	<input type="submit" name="submit" value="Submit"><br><br>
 </form>
 
-<a href="../index.php">Back to home</a>
 
 <?php include '../templates/footer.php'; ?>

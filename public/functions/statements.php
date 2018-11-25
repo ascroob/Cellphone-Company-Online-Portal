@@ -1,7 +1,8 @@
 
 <?php include "../templates/header.php"; ?>
 
-<h2>Customers</h2>
+
+<h2>View All Customer Statements</h2>
 
 <form method="post">
 	<label for="spID">Service Provider ID</label>
@@ -10,6 +11,8 @@
 </form>
 <br>
 
+<p>Note: There may be an additional charge added to the final transaction amount for customers who have left the country.</p>
+
 <?php if (isset($_POST['submit'])) {
 	try {
 		require "../../connect.php";
@@ -17,9 +20,12 @@
 
 		$connection = new PDO($dsn, $username, $password, $options);
 		
-		$sql = "SELECT * 
-				FROM c9.Customer
-				WHERE serviceProviderID = :spID";
+		$sql = "SELECT cu.idNo, clientName, s.contractID, planID, startDate, endDate, monthlyFee, overChargeFee
+                FROM c9.Customer cu, c9.Contract co, c9.Statement s
+                WHERE co.contractID = s.contractID
+                AND cu.idNo = co.idNo
+                AND serviceProviderID = :spID
+                GROUP BY cu.idNo";
 				
 		$serviceProviderID = $_POST['spID'];
 		
@@ -39,28 +45,32 @@
 <?php  
 if (isset($_POST['submit'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
-		<h2>All Customers</h2>
-
-		<table class="table table-sm">
-  			<thead>
-   		 		<tr>
-					<th scope="col">Customer ID</th>
-					<th scope="col">Name</th>
-					<th scope="col">Address</th>
-					<th scope="col">Email</th>
-					<th scope="col">Birth Date</th>
-					<th scope="col">Date Joined</th>
+		<h2>Results</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Customer ID</th>
+					<th>Name</th>
+					<th>Contract ID</th>
+					<th>Plan ID</th>
+					<th>start Date</th>
+					<th>End Date </th>
+					<th>Monthly Fee</th>
+					<th>Over Charge Fee</th>
 				</tr>
 			</thead>
 			<tbody>
 	<?php foreach ($result as $row) { ?>
 			<tr>
-				<th scope = "row"><?php echo escape($row["idNo"]); ?></td>
+				<td><?php echo escape($row["idNo"]); ?></td>
 				<td><?php echo escape($row["clientName"]); ?></td>
-				<td><?php echo escape($row["clientAddress"]); ?></td>
-				<td><?php echo escape($row["clientEmail"]); ?></td>
-				<td><?php echo escape($row["birthDate"]); ?></td>
-				<td><?php echo escape($row["dateJoined"]); ?></td>
+				<td><?php echo escape($row["contractID"]); ?></td>
+				<td><?php echo escape($row["planID"]); ?></td>
+				<td><?php echo escape($row["startDate"]); ?></td>
+				<td><?php echo escape($row["endDate"]); ?></td>
+				<td><?php echo escape($row["monthlyFee"]); ?></td>
+				<td><?php echo escape($row["overChargeFee"]); ?></td>
+				
 			</tr>
 		<?php } ?> 
 			</tbody>

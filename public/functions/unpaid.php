@@ -1,6 +1,16 @@
 
 <?php include "../templates/header.php"; ?>
 
+
+<h2>Unpaid Customer Statements</h2>
+
+<form method="post">
+	<label for="spID">Service Provider ID</label>
+	<input type="text" id="spID" name="spID">
+	<input type="submit" name="submit" value="View Results">
+</form>
+<br>
+
 <?php if (isset($_POST['submit'])) {
 	try {
 		require "../../connect.php";
@@ -58,15 +68,5 @@ if (isset($_POST['submit'])) {
 	<?php } 
 } ?> 
 
-
-<h2>Unpaid Customer Statements</h2>
-
-<form method="post">
-	<label for="spID">Service Provider ID</label>
-	<input type="text" id="spID" name="spID">
-	<input type="submit" name="submit" value="View Results">
-</form>
-
-<a href="../index.php">Back to home</a>
 
 <?php include "../templates/footer.php"; ?>
