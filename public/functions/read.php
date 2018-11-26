@@ -15,7 +15,7 @@
 		require "../../connect.php";
 		require "../../common.php";
 
-		$connection = new PDO($dsn, $username, $password, $options);
+		$connection = new PDO($dsn, $host, $pass, $options);
 		
 		$sql = "SELECT * 
 				FROM c9.Customer

@@ -3,7 +3,13 @@
             $selected_val = $_POST['formSPID'];  // Storing Selected Value In Variable
             echo "You have selected :" .$selected_val;  // Displaying Selected Value
      }?>
-
+<?php
+ //   include('authen_login.php'); // Includes Login Script
+    
+  //  if(isset($_SESSION['login'])){
+    //    header("location: public/index.php");
+    //}
+?>
 
 <!DOCTYPE html >
 <html>
@@ -51,3 +57,4 @@
 		</div>
 </body>
 </html>
+<?php} ?>

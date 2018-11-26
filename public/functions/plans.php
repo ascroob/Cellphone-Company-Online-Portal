@@ -1,5 +1,5 @@
 
-<?php include "../templates/header.php"; ?>
+<?php include "../templates/header.php";  ?>
 
 
 <h2>View Plans</h2>
@@ -15,15 +15,17 @@
 	try {
 		require "../../connect.php";
 		require "../../common.php";
+		include "../../authen_login.php";
 
-		$connection = new PDO($dsn, $username, $password, $options);
+		$connection = new PDO($dsn, $host, $pass, $options);
 		
 		$sql = "SELECT cu.idNo, p.planID, textAmount, minAmount, dataAmount
                 FROM c9.Customer cu, c9.Contract co, c9.Statement s, c9. Plan p
                 WHERE cu.idNo = co.idNo
                 AND co.contractID = s.contractID
                 AND s.planID = p.planID
-                AND cu.serviceProviderID = :spID
+                AND cu.serviceProviderID = $spID
+              
                 GROUP BY cu.idNo";
 				
 		$serviceProviderID = $_POST['spID'];

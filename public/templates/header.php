@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
 
@@ -59,7 +58,9 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/contract.php#">Expiring Contracts</a>
         </div>
-      </li>
+        </li>
+         <a class="nav-item nav-link active" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/logout.php#" >Logout <span class="sr-only">(current)</span></a>
+      
     </div>
   </div>
 </nav>

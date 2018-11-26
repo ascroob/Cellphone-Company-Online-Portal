@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
 	require "../../connect.php";
 
 	try {
-	    $mysqli = new mysqli($servername, $username, $password, $dbname);
+	    $mysqli = new mysqli($servername, $host, $pass, $dbname);
 
     	$sql = "USE c9";
     	$sql = "INSERT INTO Customer VALUES (?, ?, ?, ?, ?, ?, ?)";

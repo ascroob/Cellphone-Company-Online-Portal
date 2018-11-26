@@ -4,8 +4,8 @@
     // then click the URL that is emitted to the Output tab of the console.
 
     $servername = 'localhost';
-    $username = getenv('C9_USER');
-    $password = "";
+    $host = getenv('C9_USER');
+    $pass = "";
     $dbname = "c9";
     $dbport = 3306;
     $dsn        = "mysql:host=$servername;database=$dbname"; // will use later
@@ -14,10 +14,10 @@
               );
 
     // Create connection
-    $db = new mysqli($servername, $username, $password, $database, $dbport);
+    $db = new mysqli($servername, $host, $pass, $database, $dbport);
 
-  /*  // Check connection
-    if ($db->connect_error) {
+    // Check connection
+  /*  if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     } 
     echo "Connected successfully (".$db->host_info.")";
