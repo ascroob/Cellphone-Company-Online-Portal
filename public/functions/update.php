@@ -39,7 +39,7 @@
 <?php  
 if (isset($_POST['submit'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
-		<h2>All Customers</h2>
+		<h2 align = "center">All Customers</h2>
 
 		<table class="table table-sm">
   			<thead>

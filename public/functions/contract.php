@@ -10,7 +10,16 @@
 	<input type="submit" name="submit" value="View Results">
 </form>
 <br>
+<p>Or check when a contract will expire:</p>
+<br>
+<form method="post">
+	<label for="idNo">Customer ID</label>
+	<input type="text" id="idNo" name="idNo">
+	<input type="submit" name="submitID" value="View Results">
+</form>
+<br>
 
+<!-- view all contracts expiring in 4 months or less-->
 <?php if (isset($_POST['submit'])) {
 	try {
 		require "../../connect.php";
@@ -38,12 +47,39 @@
 }
 ?>
 
+<!-- view when a specific contract expires-->
+<?php if (isset($_POST['submitID'])) {
+	try {
+		
+		require "../../connect.php";
+		require "../../common.php";
+		
+		$connection = new PDO($dsn, $host, $pass, $options);
+		
+		$sql = "SELECT cu.idNo, clientName, clientEmail, contractLength, contractID
+                FROM c9.Customer cu, c9.Contract co
+                WHERE cu.idNo = co.idNo
+                AND co.idNo = :idNo";
+				
+		$idNo = $_POST['idNo'];
+		
+		$statement = $connection->prepare($sql);
+        $statement->bindParam(':idNo', $idNo, PDO::PARAM_STR);
+        $statement->execute();
+        
+        $result = $statement->fetchAll();
+        
+	} catch(PDOException $error) {
+		echo $sql . "<br>" . $error->getMessage();
+	}
+}
+?>
 
 <?php  
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit']) || isset($_POST['submitID'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
-		<h2>Customers with Outstanding Statements</h2>
-		<table>
+		<h2 align = "center">Customers with Outstanding Statements</h2>
+		<table align = "center">
 			<thead>
 				<tr>
 					<th>Customer ID</th>
@@ -66,9 +102,9 @@ if (isset($_POST['submit'])) {
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote>No results found for <?php echo escape($_POST['spID']); ?>.</blockquote>
+		<blockquote align = "center">Cannot find contract. Double check contract number.</blockquote>
 	<?php } 
 } ?> 
 
-
+<br><br>
 <?php include "../templates/footer.php"; ?>

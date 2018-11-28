@@ -54,7 +54,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/ooc.php#">International Roaming</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/data.php#">Data Usage</a>
+          <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/data.php#">Monthly Usage</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/contract.php#">Expiring Contracts</a>
         </div>

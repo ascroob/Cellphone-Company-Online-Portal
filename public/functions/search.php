@@ -19,6 +19,7 @@
 	<input type="text" id="idNo" name="idNo">
 	<input type="submit" name="submitID" value="View Results">
 </form>
+<br>
 
 <!-- search by name-->
 <?php if (isset($_POST['submit'])) {
@@ -52,7 +53,7 @@
 		require "../../connect.php";
 		require "../../common.php";
 
-		$connection = new PDO($dsn, $username, $password, $options);
+		$connection = new PDO($dsn, $host, $pass, $options);
 		
 		$sql = "SELECT * 
 				FROM c9.Customer
@@ -74,10 +75,10 @@
 
 <!-- display results for name search-->
 <?php  
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit']) || isset ($_POST['submitID'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
-		<h2>Results</h2>
-		<table>
+		<h2 align = "center">Results</h2>
+		<table align = "center">
 			<thead>
 				<tr>
 					<th>Customer ID</th>
@@ -104,48 +105,11 @@ if (isset($_POST['submit'])) {
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote>No results found for <?php echo escape($_POST['clientName']); ?>.</blockquote>
+		<blockquote>No results found.</blockquote>
 	<?php } 
 } ?> 
 
 <br>
-
-<!-- display results for ID search-->
-<?php  
-if (isset($_POST['submitID'])) {
-	if ($result && $statement->rowCount() > 0) { ?>
-		<h2>Results</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>Customer ID</th>
-					<th>Name</th>
-					<th>Address</th>
-					<th>Email</th>
-					<th>Birth Date</th>
-					<th>Date Joined</th>
-					<th>Service Provider ID</th>
-				</tr>
-			</thead>
-			<tbody>
-	<?php foreach ($result as $row) { ?>
-			<tr>
-				<td><?php echo escape($row["idNo"]); ?></td>
-				<td><?php echo escape($row["clientName"]); ?></td>
-				<td><?php echo escape($row["clientAddress"]); ?></td>
-				<td><?php echo escape($row["clientEmail"]); ?></td>
-				<td><?php echo escape($row["birthDate"]); ?></td>
-				<td><?php echo escape($row["dateJoined"]); ?></td>
-				<td><?php echo escape($row["serviceProviderID"]); ?></td>
-			</tr>
-		<?php } ?> 
-			</tbody>
-	</table>
-	<?php } else { ?>
-		<blockquote>No results found for <?php echo escape($_POST['idNo']); ?>.</blockquote>
-	<?php } 
-} ?> 
-
 
 
 
