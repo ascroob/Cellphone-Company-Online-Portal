@@ -14,22 +14,23 @@ if (isset($_POST['username']) and isset($_POST['password'])){
         FROM c9.CellProviderCompany 
         WHERE username='$username' 
         AND password='$password'";
+        
+    $view = "CREAT VIEW ServiceProvider
+            FROM c9.Customer
+            WHERE serviceProviderID = $mysql";
     
     $result = mysqli_query($db, $mysql) or die(mysqli_error($db));
     $count = mysqli_num_rows($result);
 
-    
-//STILL NEED TO: show valid/invalid pop-up
-//user can bypass login through URL
 
     if ($count == 1){
         echo "<script type='text/javascript'>alert('Login Credentials verified')</script>";
         header("location: public/index.php");
     
     }else{
+        echo "Invalid Login Credentials";
+        header("Location: login.php");
         echo "<script type='text/javascript'>alert('Invalid Login Credentials')</script>";
-        //echo "Invalid Login Credentials";
-     //  header("Location: login.php");
     }
 };
 ?>

@@ -41,7 +41,7 @@
           Features
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/create.php#">Add Customer</a>
+          <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/update.php#">Edit Customer Info</a>
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/read.php#">View Customers</a>
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/search.php#">Search Customers</a>
           <div class="dropdown-divider"></div>
