@@ -1,8 +1,16 @@
+<?php include 'templates/header.php'; ?>
+
+<!--set background image-->
 <?php
-//include('../session.php');
+$background = "assets/bricks-brickwall-brickwork-1092364.jpg";
 ?>
 
-<?php include 'templates/header.php'; ?>
+<style type="text/css">
+
+body {
+    background-image: url('<?php echo $background;?>');
+}
+</style>
 
 <br><br><br>
 <h1 class="display-1"><center>Welcome to the Cell Provider Portal.</center></h1>

@@ -1,6 +1,17 @@
 
 <?php include "../templates/header.php"; ?>
 
+<!--set background image-->
+<?php
+$background = "../assets/bricks-brickwall-brickwork-1092364.jpg";
+?>
+
+<style type="text/css">
+
+body {
+    background-image: url('<?php echo $background;?>');
+}
+</style>
 
 <h2>Customer Contracts Expiring in Less than 4 Months</h2>
 <br>
