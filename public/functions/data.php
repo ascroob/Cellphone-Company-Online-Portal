@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote>No results found for <?php echo escape($_POST['idNo']); ?>.</blockquote>
+		<h3 align = "center">No valid ID found for <?php echo escape($_POST['idNo']); ?>.</h3>
 	<?php } 
 } ?> 
 <br><br>

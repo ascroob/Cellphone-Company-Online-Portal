@@ -1,17 +1,6 @@
 
 <?php include "../templates/header.php"; ?>
 
-<!--set background image-->
-<?php
-$background = "../assets/bricks-brickwall-brickwork-1092364.jpg";
-?>
-
-<style type="text/css">
-
-body {
-    background-image: url('<?php echo $background;?>');
-}
-</style>
 
 <h2>Customer Contracts Expiring in Less than 4 Months</h2>
 <br>
@@ -113,7 +102,8 @@ if (isset($_POST['submit']) || isset($_POST['submitID'])) {
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote align = "center">Cannot find contract. Double check contract number.</blockquote>
+		<h3 align = "center">Cannot find contract. Double check contract number.<br>
+			Otherwise, you may have entered an invalid Service Provider ID.</h3>
 	<?php } 
 } ?> 
 

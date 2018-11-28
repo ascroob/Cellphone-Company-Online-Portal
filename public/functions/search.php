@@ -105,7 +105,7 @@ if (isset($_POST['submit']) || isset ($_POST['submitID'])) {
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote>No results found.</blockquote>
+		<h3 align = "center">No results found. Please enter a valid name or ID.</h3>
 	<?php } 
 } ?> 
 

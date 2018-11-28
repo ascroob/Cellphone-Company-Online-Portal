@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote>No results found for <?php echo escape($_POST['spID']); ?>.</blockquote>
+		<h3 align = "center">No results found for <?php echo escape($_POST['spID']); ?> .Please enter a valid Service Provider ID (1 - 7).</h3>
 	<?php } 
 } ?> 
 

@@ -146,7 +146,7 @@ if (isset($_POST['submit']) || isset($_POST['submitID']) || isset($_POST['submit
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote align = "center">It looks like that customer's statement has been paid!</blockquote>
+		<h3 align = "center">No results found. Please enter a valid input.</h3>
 	<?php } 
 } ?> 
 

@@ -66,3 +66,15 @@
 </nav>
 <br>
 <body>
+  
+  <!--set background image-->
+<?php
+$background = "../assets/bricks-brickwall-brickwork-1092364.jpg";
+?>
+
+<style type="text/css">
+
+body {
+    background-image: url('<?php echo $background;?>');
+}
+</style>

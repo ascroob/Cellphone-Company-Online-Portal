@@ -14,13 +14,15 @@
  <link href="public/css/logincss.css" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
   </head>
+  <br><br><br><br>
 <body id="LoginForm">
 <div class="container">
+    <h2 align = "center">Cell Provider Portal</h2>
 <div class="login-form">
 <div class="main-div">
     <div class="panel">
    <h2>Admin Login</h2>
-   <p>Please enter your email and password</p>
+   <p>Please enter your username and password</p>
    </div>
     <form id="Login" method = "post" action = "authen_login.php">
 

@@ -141,7 +141,7 @@ if (isset($_POST['submit']) || isset($_POST['submitID']) || isset($_POST['submit
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote>No results found for <?php echo escape($_POST['spID']); ?>.</blockquote>
+		<h3 align = "center">No results found. Please enter a valid input.</blockquote>
 	<?php } 
 } ?> 
 

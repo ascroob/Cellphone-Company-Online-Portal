@@ -107,8 +107,10 @@ if (isset($_POST['submit']) || isset($_POST['submitDO'])) {
 			</tbody>
 	</table>
 	<?php } else { ?>
-		<blockquote align = "center">Hmm...it doesn't appear that anyone has left the country for that long.</blockquote>
-	<?php } 
+		<h3 align = "center">Hmm...something seems wrong. <br>
+			You may have entered an invalid Service Provider ID. <br>
+			Otherwise, it doesn't appear that anyone has left the country for that long.</h3>
+	<?php }
 } ?> 
 
 <br><br>
