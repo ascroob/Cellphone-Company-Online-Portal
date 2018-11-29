@@ -78,7 +78,7 @@
 <?php  
 if (isset($_POST['submit']) || isset($_POST['submitID'])) {
 	if ($result && $statement->rowCount() > 0) { ?>
-		<h2 align = "center">Customers with Outstanding Statements</h2>
+		<h2 align = "center">Contract Expiration Date</h2>
 		<table align = "center">
 			<thead>
 				<tr>
@@ -95,7 +95,7 @@ if (isset($_POST['submit']) || isset($_POST['submitID'])) {
 				<td><?php echo escape($row["idNo"]); ?></td>
 				<td><?php echo escape($row["clientName"]); ?></td>
 				<td><?php echo escape($row["clientEmail"]); ?></td>
-				<td><?php echo escape($row["contractLength"]); ?></td>
+				<td><?php echo escape($row["contractLength"]); ?> months</td>
 				<td><?php echo escape($row["contractID"]); ?></td>
 			</tr>
 		<?php } ?> 

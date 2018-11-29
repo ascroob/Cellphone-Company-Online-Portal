@@ -49,6 +49,7 @@
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/unpaid.php#">Unpaid Statements</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/plans.php#">View Plans</a>
+          <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/stats.php#">Plan Statistics</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="https://ascroob-nwhite44-jdailly-se3309-ascroob.c9users.io/public/functions/transactions.php#">View Transactions</a>
           <div class="dropdown-divider"></div>
